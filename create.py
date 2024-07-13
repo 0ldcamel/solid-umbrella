@@ -1,3 +1,7 @@
+def main():
+    matrix = create_matrix()
+    return matrix
+
 def create_top_rows():
     seed_start = list(range(1, 10)) * 2
     top_rows = []
@@ -24,7 +28,5 @@ def create_matrix():
             matrix.append(row)
     return matrix
 
-matrix = create_matrix()
-
-for row in matrix:
-    print(row)
+if __name__ == '__main__':
+    main()
