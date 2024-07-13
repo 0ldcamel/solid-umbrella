@@ -1,4 +1,4 @@
-#0ld Camel's Sudoku
+# 0ld Camel's Sudoku
 
 This is my version of Sudoku. My plan is to:
 - Create valide Sudoku board:
