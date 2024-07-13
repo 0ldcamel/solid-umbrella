@@ -1,5 +1,5 @@
-def main():
-    pass
+# def main():
+#     pass
 
 def check_rows(matrix):
     for row in range(9):
@@ -37,5 +37,5 @@ def check_boxes(matrix):
 def check_matrix(matrix):
     return check_boxes(matrix) and check_columns(matrix) and check_rows(matrix)
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
