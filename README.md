@@ -5,3 +5,5 @@ This is my version of Sudoku. My plan is to:
   - Create filled Sudoku board
   - Poke holes to creat unsolved Sudoku board
 - Solve Sudoku.
+-   Start with single value
+-   Then back track
