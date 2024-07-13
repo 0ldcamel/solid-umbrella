@@ -1,5 +1,7 @@
 def main():
     matrix = create_matrix()
+    for row in matrix:
+        print(row)
     return matrix
 
 def create_top_rows():
