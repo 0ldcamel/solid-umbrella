@@ -4,7 +4,7 @@ def create_top_rows():
     for i in range(3):
         row = seed_start[i * 3: i * 3 + 9]
         top_rows.append(row)
-    return 
+    return top_rows
 
 def shift_column(row, shift):
     new_row = []
@@ -21,10 +21,10 @@ def create_matrix():
     for shift in range(3):
         for i in range(3):
             row = shift_column(top_rows[i], shift)
-            print(row)
             matrix.append(row)
     return matrix
 
 matrix = create_matrix()
+
 for row in matrix:
     print(row)
