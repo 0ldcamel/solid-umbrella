@@ -14,20 +14,22 @@ def pattern(r,c):
 def shuffle(s): 
     return sample(s,len(s)) 
 
-rBase = range(base) 
+rBase = list(range(base))
 
-# rows  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ]
-# cols  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
-rows = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-cols = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+row_indexes  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ]
+col_indexes  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
+print(row_indexes)
+print(col_indexes)
+# rows = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+# cols = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 # nums  = shuffle(range(1,base*base+1))
-nums = list(range(9))
+nums = list(range(1, 10))
 
 # produce board using randomized baseline pattern
-board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
+board = [ [nums[pattern(row, col)] for col in col_indexes] for row in row_indexes ]
 
-for line in board: print(line)
+# for line in board: print(line)
 
 
         

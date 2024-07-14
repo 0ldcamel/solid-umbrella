@@ -87,5 +87,45 @@ def other_index(index):
     other_index = index // 3 * 3 + random.choice(indexes)
     return other_index
 ```
+Then I defined 2 more fucntions, to swap the rows and columns
+```
+def swap_rows(matrix, row):
+    other_row = other_index(row)
+    for column in range(9):
+        matrix[row][column], matrix[other_row][column] = matrix[other_row][column], matrix[row][column]
 
+def swap_columns(matrix, column):
+    other_column = other_index(column)
+    for row in range(9):
+        matrix[row][column], matrix[row][other_column] = matrix[row][other_column], matrix[row][column]
+```
+To randomly call swap columns and rows, another function is created (uncecessarily), before the swap function can be defined (and called) for the whole matrix. The code below swaps the rows and columns 100 times.
+```
+def swap_what():
+    return random.choice(["row", "column"])
 
+SWAPS = 100
+
+def swap_matrix(matrix):
+    for _ in range(SWAPS):
+        if swap_what() == 'row':
+            row = random.randint(0, 8)
+            swap_rows(matrix, row)
+        elif swap_what() == 'column':
+            column = random.randint(0, 8)
+            swap_columns(matrix, column)
+```
+Now, the amazing code does the swapping in 2 magical lines:
+```
+def shuffle(s): 
+    return sample(s,len(s)) 
+rBase = range(base) 
+
+row_indexes  = [ g * base + r for g in shuffle(rBase) for r in shuffle(rBase) ]
+col_indexes  = [ g * base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
+```
+These two lines of code produce lists of indexes, randomly swap within their groups. Looking at the `row_indexes`, one can easily see `2, 0, 1` are in the same group, and so `7, 8, 6` and so on.
+```
+row_indexes = [2, 0, 1, 7, 8, 6, 3, 4, 5]
+col_indexes = [7, 8, 6, 0, 2, 1, 5, 3, 4]
+```
