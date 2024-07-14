@@ -3,6 +3,7 @@
 This is my version of Sudoku. My plan is to:
 - Create a valide Sudoku board:
   - Create a valid filled Sudoku board
+  - Swap rows and columns within their groups
   - Poke holes to creat unsolved Sudoku board
 - Solve Sudoku.
   - Start with single value
@@ -50,7 +51,6 @@ def shift_column(row, shift):
 def create_matrix():
     top_rows = create_top_rows()
     matrix = []
-
     for shift in range(3):
         for i in range(3):
             row = shift_column(top_rows[i], shift)
@@ -64,3 +64,28 @@ Then I found this solution on [Stack Overflow](https://stackoverflow.com/questio
 def pattern(row, columns): 
     return (base * (row % base) + row // base + column) % side
 ```
+The code above creates a 9 x 9 board, with indexes from 0 to 8. If they were from 1 to 9, the board would be a valid Sudoku. This is the output:
+```
+[0, 1, 2, 3, 4, 5, 6, 7, 8]
+[3, 4, 5, 6, 7, 8, 0, 1, 2]
+[6, 7, 8, 0, 1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5, 6, 7, 8, 0]
+[4, 5, 6, 7, 8, 0, 1, 2, 3]
+[7, 8, 0, 1, 2, 3, 4, 5, 6]
+[2, 3, 4, 5, 6, 7, 8, 0, 1]
+[5, 6, 7, 8, 0, 1, 2, 3, 4]
+[8, 0, 1, 2, 3, 4, 5, 6, 7]
+```
+It is so impressive, with just one liner. The author of this code didn't want the output to be a valid Sudoku board, but rather the indexes of a valid one. You'd see why later.
+
+### Swapping rows and columns within their groups:
+The next two lines of code is even more impressive. First, let's have a look at my code. As the swappings have to happen within their own group of 3. That means rows 0, 1 and 2 could be swap and the Sudoku board remains valid. Similarly, columns 3, 4 and 5 or (6, 7 and 8) or (0, 1, 2) can be swapped. So my code starts with given an index (for row or column), I need to get another index in the same group randomly.
+```
+def other_index(index):
+    indexes = [0, 1, 2]
+    indexes.remove(index % 3)
+    other_index = index // 3 * 3 + random.choice(indexes)
+    return other_index
+```
+
+

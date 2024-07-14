@@ -16,26 +16,19 @@ def shuffle(s):
 
 rBase = range(base) 
 
-rows  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ]
-cols  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
-nums  = shuffle(range(1,base*base+1))
+# rows  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ]
+# cols  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
+rows = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+cols = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+# nums  = shuffle(range(1,base*base+1))
+nums = list(range(9))
 
 # produce board using randomized baseline pattern
 board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
 
-# for line in board: print(line)
+for line in board: print(line)
 
-# my code from here
-# matrix = []
-# for r in range(9):
-#     row = []
-#     for c in range(9):
-#         row.append(pattern(r, c))
-#     matrix.append(row)
 
-# for row in matrix:
-#     print(row)
-print(rows)
-print(cols)
         
 
