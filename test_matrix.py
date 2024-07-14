@@ -1,6 +1,5 @@
 matrix = []
 
-
 for j in range(9):
     row = []
     row_values = (input("row: "))
